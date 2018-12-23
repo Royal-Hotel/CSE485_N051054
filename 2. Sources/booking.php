@@ -24,10 +24,31 @@
                     <img src="images/logo.png" alt="logo">
                 </a>
             </div>
-            <!-- login -->
-            <div class="login-me">
-                <button type="button" id="btnlogin" href="#">Login</button>
-                <button type="button" id="btnregister">Register</button>
+                  <!-- login -->
+        <div class="login-me">
+            <?php
+                include_once "config/core.php";
+                include_once "login_checker.php";
+                $access_denied = false; 
+            ?>
+            <?php
+        // check if users / customer was logged in
+        // if user was logged in, show "Edit Profile", "Orders" and "Logout" options
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true && $_SESSION['access_level']=='Customer'){
+            ?>
+            <a href="login1.php"><button type="button" id="btnlogin"><?php echo $_SESSION['firstname']; ?></button></a>
+                
+            </a>
+            <?php
+                }       
+                // if user was not logged in, show the "login" and "register" options
+                else{
+            ?>
+            <a href="login1.php"><button type="button" id="btnlogin">Login</button></a>
+            <a href="register.php"><button type="button" id="btnregister">Register</button></a>
+            <?php
+                }
+            ?>
             </div>
             <!-- menu -->
             <div class="drop-menu ">

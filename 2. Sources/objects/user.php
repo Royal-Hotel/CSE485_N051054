@@ -70,7 +70,6 @@ class User{
         return false;
     }
     // create new user record
-    // create new user record
     function create(){
     
         // to get time stamp for 'created' field

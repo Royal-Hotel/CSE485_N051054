@@ -4,7 +4,7 @@ class Database{
  
     // specify your own database credentials
     private $host = "localhost";
-    private $db_name = "qlks_mvc";
+    private $db_name = "royal_hotel";
     private $username = "root";
     private $password = "";
     public $conn;
