@@ -12,7 +12,7 @@
             </button>
  
             <!-- Change "Site Admin" to your site name -->
-            <a class="navbar-brand" href="<?php echo $home_url; ?>admin/index.php">Admin</a>
+            <a class="navbar-brand" href="<?php echo $home_url; ?>index.php">Home</a>
         </div>
  
         <div class="navbar-collapse collapse">
@@ -20,15 +20,32 @@
  
  
                 <!-- highlight for order related pages -->
-                <li <?php echo $page_title=="Admin Index" ? "class='active'" : ""; ?>>
-                    <a href="<?php echo $home_url; ?>admin/index.php">Home</a>
+                <li <?php echo $page_title=="Admin Information" ? "class='active'" : ""; ?>>
+                    <a href="<?php echo $home_url; ?>admin/index.php">Admin</a>
                 </li>
  
-                <!-- highlight for user related pages -->
-                <li <?php
-                        echo $page_title=="Users" ? "class='active'" : ""; ?> >
+                <!-- highlight for Users related pages -->
+                <li <?php echo $page_title=="Users" ? "class='active'" : ""; ?> >
                     <a href="<?php echo $home_url; ?>admin/read_users.php">Users</a>
                 </li>
+
+                <!-- highlight for contact related pages -->
+                <li <?php
+                        echo $page_title=="Contact" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_contact.php">Contact</a>
+                </li>
+
+                <!-- highlight for Rooms related pages -->
+                <li <?php echo $page_title=="Contact" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_room.php">Rooms</a>
+                </li>
+
+                <!-- highlight for Bill related pages -->
+                <li <?php
+                        echo $page_title=="Bill" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_bill.php">Bill</a>
+                </li>
+            
             </ul>
  
             <!-- options in the upper right corner of the page -->

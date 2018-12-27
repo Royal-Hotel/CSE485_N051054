@@ -6,13 +6,10 @@ if($num>0){
  
     // table headers
     echo "<tr>";
-        echo "<th>Firstname</th>";
-        echo "<th>Lastname</th>";
-        echo "<th>Email</th>";
-        echo "<th>Contact Number</th>";
-        echo "<th>Access Level</th>";
-        echo "<th>Action</th>";
-
+        echo "<th>ID</th>";
+        echo "<th>Name</th>";
+        echo "<th>ID_LoaiPhong</th>";
+        echo "<th>ID_TrangThaiPhong</th>";
     echo "</tr>";
  
     // loop through the user records
@@ -21,19 +18,17 @@ if($num>0){
  
         // display user details
         echo "<tr>";
-            echo "<td>{$firstname}</td>";
-            echo "<td>{$lastname}</td>";
-            echo "<td>{$email}</td>";
-            echo "<td>{$contact_number}</td>";
-            echo "<td>{$access_level}</td>";
-            echo "<td><button> Update </button> <button> Delete </button> </td>";
+            echo "<td>{$id_p}</td>";
+            echo "<td>{$ten_p}</td>";
+            echo "<td>{$id_lp}</td>";
+            echo "<td>{$id_ttp}</td>";
         echo "</tr>";
         }
  
     echo "</table>";
  
-    $page_url="read_users.php?";
-    $total_rows = $user->countAll();
+    $page_url="read_room.php?";
+    $total_rows = $room->countAllRoom();
  
     // actual paging buttons
     include_once 'paging.php';
@@ -42,7 +37,7 @@ if($num>0){
 // tell the user there are no selfies
 else{
     echo "<div class='alert alert-danger'>
-        <strong>No users found.</strong>
+        <strong>No room found.</strong>
     </div>";
 }
 ?>

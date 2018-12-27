@@ -20,7 +20,7 @@
     <div class="header-me">
         <div class="row-me">
             <div class="logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/logo.png" alt="logo">
                 </a>
             </div>
@@ -54,11 +54,11 @@
             <div class="drop-menu ">
                 <ul class="main-nav">
                     <li><a href="show-room.php">ROOMS</a></li>
-                    <li><a href="photo-gallery.html">PHOTO GALLERY</a></li>
+                    <li><a href="photo-gallery.php">PHOTO GALLERY</a></li>
                     <li><a href="#">RESTAURANTS & BAR</a></li>
                     <li><a href="#">WELLNESS</a></li>
                     <li><a href="contact-us.php">CONTACT US</a></li>
-                    <a href="booking.html"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
+                    <a href="booking.php"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
                 </ul>
                 <div class="handle">
                     <b class="menu">MENU</b>
