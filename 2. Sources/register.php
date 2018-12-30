@@ -50,7 +50,7 @@ echo "<div class='col-md-12'>";
             $user->address=$_POST['address'];
             $user->password=$_POST['password'];
             $user->access_level='Customer';
-            $user->status=1; 
+            $user->status=0; 
             // access code for email verification
             $access_code=$utils->getToken();    
             $user->access_code=$access_code;

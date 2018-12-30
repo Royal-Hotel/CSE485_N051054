@@ -1,9 +1,10 @@
 <?php
+
 // display the table if the number of users retrieved was greater than zero
 if($num>0){
  
     echo "<table class='table table-hover table-responsive table-bordered'>";
- 
+    
     // table headers
     echo "<tr>";
         echo "<th>Firstname</th>";
@@ -26,7 +27,7 @@ if($num>0){
             echo "<td>{$email}</td>";
             echo "<td>{$contact_number}</td>";
             echo "<td>{$access_level}</td>";
-            echo "<td><button> Update </button> <button> Delete </button> </td>";
+            echo "<td><a href=''>   Sửa</a>   |<a href=''> Xóa</a> </td>";
         echo "</tr>";
         }
  
