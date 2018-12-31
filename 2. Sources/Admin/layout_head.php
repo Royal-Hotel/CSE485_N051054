@@ -16,12 +16,12 @@
  
 </head>
 <body>
- 
+
     <?php
     // include top navigation bar
     include_once "navigation.php";
     ?>
- 
+    
     <!-- container -->
     <div class="container">
  
@@ -31,3 +31,4 @@
                 <h1><?php echo isset($page_title) ? $page_title : "The Code of a Ninja"; ?></h1>
             </div>
         </div>
+        

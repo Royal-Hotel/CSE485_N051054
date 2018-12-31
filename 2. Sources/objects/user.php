@@ -297,4 +297,35 @@ class User{
     
         return false;
     }
+    public function Update(){
+    
+        // query to select all user records
+        $query = "UPDATE " . $this->table_name . "
+        SET firstname =:firstname;
+        SET lastname =:lastname;
+        SET email =:email;
+        SET contact_number =:contact_number;
+        SET access_level =:access_level";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        $this->firstname=htmlspecialchars(strip_tags($this->firstname));
+        $this->lastname=htmlspecialchars(strip_tags($this->lastname));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+        $this->contact_number=htmlspecialchars(strip_tags($this->contact_number));
+        $this->access_level=htmlspecialchars(strip_tags($this->access_level));
+
+        $stmt->bindParam(':firstname', $this->firstname);
+        $stmt->bindParam(':lastname', $this->lastname);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':contact_number', $this->contact_number);
+        $stmt->bindParam(':access_level', $this->access_level);
+
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
 }

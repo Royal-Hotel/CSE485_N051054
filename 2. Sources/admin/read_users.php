@@ -8,6 +8,7 @@ include_once "login_checker.php";
 // include classes
 include_once '../config/database.php';
 include_once '../objects/user.php';
+include_once '../objects/Search.php';
  
 // get database connection
 $database = new Database();
@@ -21,9 +22,17 @@ $page_title = "Users";
  
 // include page header HTML
 include_once "layout_head.php";
- 
+ ?>
+<div style="text-align=center;">
+    <form action="Search.php" method="get">
+        Search: <input type="text" name="search" />
+        <input type="submit" name="ok" value="search" />
+    </form>
+</div>
+<br>
+ <?php
 echo "<div class='col-md-12'>";
- 
+    
     // read all users from the database
     $stmt = $user->readAll($from_record_num, $records_per_page);
  

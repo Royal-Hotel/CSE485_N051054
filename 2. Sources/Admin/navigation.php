@@ -43,7 +43,7 @@
                 <!-- highlight for Bill related pages -->
                 <li <?php
                         echo $page_title=="Bill" ? "class='active'" : ""; ?> >
-                    <a href="<?php echo $home_url; ?>admin/read_bill.php">Bill</a>
+                    <a href="<?php echo $home_url; ?>admin/read_payment.php">Payment</a>
                 </li>
             
             </ul>
