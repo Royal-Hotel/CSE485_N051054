@@ -27,6 +27,7 @@ include_once "layout_head.php";
     <form action="Search.php" method="get">
         Search: <input type="text" name="search" />
         <input type="submit" name="ok" value="search" />
+        <a href="../register.php"><button type="text-align=left;" id="btnlogin">Them</button></a>
     </form>
 </div>
 <br>

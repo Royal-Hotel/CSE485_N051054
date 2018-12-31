@@ -10,6 +10,8 @@ if($num>0){
         echo "<th>Name</th>";
         echo "<th>ID_LoaiPhong</th>";
         echo "<th>ID_TrangThaiPhong</th>";
+        echo "<th>Action</th>";
+
     echo "</tr>";
  
     // loop through the user records
@@ -22,13 +24,14 @@ if($num>0){
             echo "<td>{$ten_p}</td>";
             echo "<td>{$id_lp}</td>";
             echo "<td>{$id_ttp}</td>";
+            echo "<td><a href=''>   Sửa</a>   |<a href=''> Xóa</a> </td>";
         echo "</tr>";
         }
  
     echo "</table>";
  
     $page_url="read_room.php?";
-    $total_rows = $room->countAllRoom();
+    $total_rows = $room->countAll();
  
     // actual paging buttons
     include_once 'paging.php';

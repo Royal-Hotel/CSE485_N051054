@@ -16,34 +16,9 @@ class Room{
     public function __construct($db){
         $this->conn = $db;
     }
-    function readAllRoom($from_record_num, $records_per_page){
     
-        // query to read all user records, with limit clause for pagination
-        $query = "SELECT
-                    id_p,
-                    ten_p,
-                    id_lp,
-                    id_ttp
-                FROM " . $this->table_name . "
-                ORDER BY id_p DESC
-                LIMIT ?, ?";
-    
-        // prepare query statement
-        $stmt = $this->conn->prepare( $query );
-    
-        // bind limit clause variables
-        $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-        $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
-    
-        // execute query
-        $stmt->execute();
-    
-        // return values
-        return $stmt;
-    }
-
     // create new user record
-    function createRoom(){
+    function create(){
 
         // insert query
         $query = "INSERT INTO " . $this->table_name . "
@@ -83,8 +58,7 @@ class Room{
         echo "</pre>";
     }
 
-    function readAllRoom($from_record_num, $records_per_page)
-    {
+    function readAll($from_record_num, $records_per_page){
         // query to read all room records, with limit clause for pagination
         $query = "SELECT
                     id_p,
@@ -109,7 +83,7 @@ class Room{
         return $stmt;
     }
     // used for paging room
-    public function countAllRoom(){
+    public function countAll(){
 
         // query to select all room records
         $query = "SELECT id_p FROM " . $this->table_name . "";
@@ -121,7 +95,7 @@ class Room{
         $stmt->execute();
     
         // get number of rows
-        $num = $stmt->rowCountRoom();
+        $num = $stmt->rowCount();
     
         // return row count
         return $num;
