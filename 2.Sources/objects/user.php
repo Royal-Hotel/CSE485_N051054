@@ -271,7 +271,7 @@ class User{
     
     }
     // used in forgot password feature
-    function updatePassword(){
+    public function updatePassword(){
     
         // update query
         $query = "UPDATE " . $this->table_name . "
