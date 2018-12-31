@@ -9,7 +9,7 @@ session_start();
 date_default_timezone_set('Asia/Manila');
  
 // home page url
-$home_url="http://localhost/CSE485_N051054/2. Sources/";
+$home_url="http://localhost/CSE485_N051054/2.Sources/";
  
 // page given in URL parameter, default page is one
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
