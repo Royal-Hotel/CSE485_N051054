@@ -343,8 +343,8 @@ li #p3 {
 }
 
 /* responsive form login */
-@media screen and (max-width: 455px){
-    .login {
+@media screen and (max-width: 450px){
+    .login-me {
         display: none;
     }
 }
@@ -372,9 +372,6 @@ li #p3 {
  .content-text p {
      padding-left: 15px;
  }
- /* footer{
-     background-color: #000000;
- } */
 
  .footer-basic {
      background-color: #000000;
@@ -590,5 +587,9 @@ section h2 {
      padding-top: 130px;
  }
 
-
+ .account-wall .tab-content #login {
+    text-align: center;
+    width: 10px;
+    background: #000;
+}
 

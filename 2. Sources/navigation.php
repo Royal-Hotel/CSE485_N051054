@@ -12,7 +12,7 @@
             </button>
  
             <!-- Change "Your Site" to your site name -->
-            <a class="navbar-brand" href="<?php echo $home_url; ?>index.php">Home</a>
+            <a class="navbar-brand" href="<?php echo "$home_url"; ?>index.php">Home</a>
         </div>
  
         <div class="navbar-collapse collapse">

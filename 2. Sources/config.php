@@ -1,0 +1,4 @@
+<?php
+ $smtphost="";
+ $smtpuser="";
+ $smtppass="";

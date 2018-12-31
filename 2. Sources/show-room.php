@@ -26,16 +26,15 @@
             </div>
             <!-- login -->
             <div class="login-me">
-                <button type="button" id="btnlogin" href="#">Login</button>
-                <button type="button" id="btnregister">Register</button>
+                <a href="#"><button type="button" id="btnlogin" >Login</button></a>
+                <a href="#"><button type="button" id="btnregister">Register</button></a>
             </div>
             <!-- menu -->
             <div class="drop-menu ">
                 <ul class="main-nav">
                     <li><a href="show-room.php">ROOMS</a></li>
                     <li><a href="photo-gallery.php">PHOTO GALLERY</a></li>
-                    <li><a href="#">RESTAURANTS & BAR</a></li>
-                    <li><a href="#">WELLNESS</a></li>
+                    <li><a href="#">NEWS & EVENT</a></li>
                     <li><a href="contact-us.php">CONTACT US</a></li>
                     <a href="booking.php"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
                 </ul>
@@ -75,7 +74,7 @@
             {
                 echo "<tr>";
                 echo "<td>"; ?> <img id="show-room-me"style="padding:20px;"src="<?php echo $row["img"]; ?>" height="500" witdh="500"> <?php echo "</td>";
-                echo "<td>"; echo $row["loaiphong"]; echo "    giá   "; echo $row["giaphong"]; echo " <a href='booking.html'><button>BOOK NOW </button></a>"; echo "</td>";
+                echo "<td>"; echo $row["ten_lp"]; echo "    giá   "; echo $row["gia_lp"]; echo " <a href='booking.html'><button>BOOK NOW </button></a>"; echo "</td>";
                 echo "</tr>";
             }
             echo "</table>";
