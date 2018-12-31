@@ -23,9 +23,3 @@ class Database{
         return $this->conn;
     }
 }
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "wellcome";
-?>
