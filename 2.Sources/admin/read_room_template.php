@@ -1,12 +1,18 @@
+<div style="text-align=center;">
+    <form action="Search.php" method="get">
+        Search: <input type="text" name="search" />
+        <input type="submit" name="ok" value="search" />
+        <a href="../register.php"><button type="text-align=left;" id="btnlogin">Add</button></a>
+    </form>
+</div>
+<br>
 <?php
-// display the table if the number of users retrieved was greater than zero
 if($num>0){
  
     echo "<table class='table table-hover table-responsive table-bordered'>";
  
     // table headers
     echo "<tr>";
-        echo "<th>ID</th>";
         echo "<th>Name</th>";
         echo "<th>ID_LoaiPhong</th>";
         echo "<th>ID_TrangThaiPhong</th>";
@@ -20,11 +26,10 @@ if($num>0){
  
         // display user details
         echo "<tr>";
-            echo "<td>{$id_p}</td>";
             echo "<td>{$ten_p}</td>";
             echo "<td>{$id_lp}</td>";
             echo "<td>{$id_ttp}</td>";
-            echo "<td><a href=''>   Sửa</a>   |<a href=''> Xóa</a> </td>";
+            echo "<td><a href=''>   Update</a>   |<a href=''> Delete</a> </td>";
         echo "</tr>";
         }
  

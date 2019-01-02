@@ -21,15 +21,7 @@ $page_title = "Rooms";
  
 // include page header HTML
 include_once "layout_head.php";
-?>
-<div style="text-align=center;">
-    <form action="Search.php" method="get">
-        Search: <input type="text" name="search" />
-        <input type="submit" name="ok" value="search" />
-    </form>
-</div>
-<br>
- <?php
+
 echo "<div class='col-md-12'>";
  
     // read all users from the database

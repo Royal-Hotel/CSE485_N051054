@@ -17,13 +17,7 @@
  
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
- 
- 
-                <!-- highlight for order related pages -->
-                <li <?php echo $page_title=="Admin Information" ? "class='active'" : ""; ?>>
-                    <a href="<?php echo $home_url; ?>admin/index.php">Admin</a>
-                </li>
- 
+
                 <!-- highlight for Users related pages -->
                 <li <?php echo $page_title=="Users" ? "class='active'" : ""; ?> >
                     <a href="<?php echo $home_url; ?>admin/read_users.php">Users</a>
@@ -36,14 +30,20 @@
                 </li>
 
                 <!-- highlight for Rooms related pages -->
-                <li <?php echo $page_title=="Contact" ? "class='active'" : ""; ?> >
+                <li <?php echo $page_title=="Rooms" ? "class='active'" : ""; ?> >
                     <a href="<?php echo $home_url; ?>admin/read_room.php">Rooms</a>
                 </li>
 
-                <!-- highlight for Bill related pages -->
+                <!-- highlight for Payment related pages -->
                 <li <?php
-                        echo $page_title=="Bill" ? "class='active'" : ""; ?> >
+                        echo $page_title=="Payment" ? "class='active'" : ""; ?> >
                     <a href="<?php echo $home_url; ?>admin/read_payment.php">Payment</a>
+                </li>
+
+                <!-- highlight for Booking related pages -->
+                <li <?php
+                        echo $page_title=="Booking" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_booking.php">Booking</a>
                 </li>
             
             </ul>

@@ -26,8 +26,28 @@
             </div>
             <!-- login -->
             <div class="login-me">
-                <a href="#"><button type="button" id="btnlogin" >Login</button></a>
-                <a href="#"><button type="button" id="btnregister">Register</button></a>
+                <?php
+                    include_once "config/core.php";
+                    include_once "login_checker.php";
+                    $access_denied = false; 
+                ?>
+                <?php
+            // check if users / customer was logged in
+            // if user was logged in, show "Edit Profile", "Orders" and "Logout" options
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true && $_SESSION['access_level']=='Customer'){
+                ?>
+                <a href="login1.php"><button type="button" id="btnlogin"><?php echo $_SESSION['firstname']; ?></button></a>
+                </a>
+                <?php
+                    }       
+                    // if user was not logged in, show the "login" and "register" options
+                    else{
+                ?>
+                <a href="login1.php"><button type="button" id="btnlogin">Login</button></a>
+                <a href="register.php"><button type="button" id="btnregister">Register</button></a>
+                <?php
+                    }
+                ?>
             </div>
             <!-- menu -->
             <div class="drop-menu ">
@@ -74,7 +94,7 @@
             {
                 echo "<tr>";
                 echo "<td>"; ?> <img id="show-room-me"style="padding:20px;"src="<?php echo $row["img"]; ?>" height="500" witdh="500"> <?php echo "</td>";
-                echo "<td>"; echo $row["ten_lp"]; echo "    giá   "; echo $row["gia_lp"]; echo " <a href='booking.html'><button>BOOK NOW </button></a>"; echo "</td>";
+                echo "<td>"; echo $row["ten_lp"]; echo "    giá   "; echo $row["gia_lp"]; echo " <a href='booking.php'><button>BOOK NOW </button></a>"; echo "</td>";
                 echo "</tr>";
             }
             echo "</table>";

@@ -22,16 +22,7 @@ $page_title = "Users";
  
 // include page header HTML
 include_once "layout_head.php";
- ?>
-<div style="text-align=center;">
-    <form action="Search.php" method="get">
-        Search: <input type="text" name="search" />
-        <input type="submit" name="ok" value="search" />
-        <a href="../register.php"><button type="text-align=left;" id="btnlogin">Them</button></a>
-    </form>
-</div>
-<br>
- <?php
+
 echo "<div class='col-md-12'>";
     
     // read all users from the database

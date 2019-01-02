@@ -7,34 +7,42 @@ include_once "login_checker.php";
  
 // include classes
 include_once '../config/database.php';
-include_once '../objects/payment.php';
+include_once '../objects/booking.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize objects
-$payment = new Payment($db);
+$booking = new Booking($db);
  
 // set page title
-$page_title = "Payment";
+$page_title = "Booking";
  
 // include page header HTML
 include_once "layout_head.php";
-
+?>
+<div style="text-align=center;">
+    <form action="Search.php" method="get">
+        Search: <input type="text" name="search" />
+        <input type="submit" name="ok" value="search" />
+    </form>
+</div>
+<br>
+ <?php
 echo "<div class='col-md-12'>";
  
-    // read all users from the database
-    $stmt = $payment->readAll($from_record_num, $records_per_page);
+    // read all booking from the database
+    $stmt = $booking->readAll($from_record_num, $records_per_page);
  
     // count retrieved users
     $num = $stmt->rowCount();
  
     // to identify page for paging
-    $page_url="read_payment.php?";
+    $page_url="read_booking.php?";
  
     // include products table HTML template
-    include_once "read_payment_template.php";
+    include_once "read_booking_template.php";
  
 echo "</div>";
  

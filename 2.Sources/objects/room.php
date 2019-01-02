@@ -1,5 +1,5 @@
 <?php
-// 'user' object
+// 'Room' object
 class Room{
  
     // database connection and table name
@@ -17,13 +17,12 @@ class Room{
         $this->conn = $db;
     }
     
-    // create new user record
+    // create new Room record
     function create(){
 
         // insert query
         $query = "INSERT INTO " . $this->table_name . "
                 SET
-            id_p = :id_p,
             ten_p = :ten_p,
             id_lp = :id_lp,
             id_ttp = :id_ttp";
@@ -32,13 +31,11 @@ class Room{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->id_p=htmlspecialchars(strip_tags($this->id_p));
         $this->ten_p=htmlspecialchars(strip_tags($this->ten_p));
         $this->id_lp=htmlspecialchars(strip_tags($this->id_lp));
         $this->id_ttp=htmlspecialchars(strip_tags($this->id_ttp));
 
         // bind the values
-        $stmt->bindParam(':id_p', $this->id_p);
         $stmt->bindParam(':ten_p', $this->ten_p);
         $stmt->bindParam(':id_lp', $this->id_lp);
         $stmt->bindParam(':id_ttp', $this->id_ttp);

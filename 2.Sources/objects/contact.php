@@ -1,5 +1,5 @@
 <?php
-// 'user' object
+// 'Contact' object
 class Contact{
  
     // database connection and table name
@@ -8,84 +8,34 @@ class Contact{
  
     // object properties
     public $id_ct;
-    public $id;
     public $name;
     public $email;
-    public $massage;
+    public $message;
  
     // constructor
     public function __construct($db){
         $this->conn = $db;
     }
-    // // check if given email exist in the database
-    // function emailExists(){
     
-    //     // query to check if email exists
-    //     $query = "SELECT id_ct, id, name, email, massage
-    //             FROM " . $this->table_name . "
-    //             WHERE email = ?
-    //             LIMIT 0,1";
-    
-    //     // prepare the query
-    //     $stmt = $this->conn->prepare( $query );
-    
-    //     // sanitize
-    //     $this->email=htmlspecialchars(strip_tags($this->email));
-    
-    //     // bind given email value
-    //     $stmt->bindParam(1, $this->email);
-    
-    //     // execute the query
-    //     $stmt->execute();
-    
-    //     // get number of rows
-    //     $num = $stmt->rowCount();
-    
-    //     // if email exists, assign values to object properties for easy access and use for php sessions
-    //     if($num>0){
-    
-    //         // get record details / values
-    //         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    //         // assign values to object properties
-    //         $this->id_ct = $row['id_ct'];
-    //         $this->id = $row['id'];
-    //         $this->name = $row['name'];
-    //         $this->email = $row['email'];
-    //         $this->massage = $row['massage'];
-    
-    //         // return true because email exists in the database
-    //         return true;
-    //     }
-    
-    //     // return false if email does not exist in the database
-    //     return false;
-    // }
-    // create new user record
+    // create new Room record
     function create(){
-    
+
         // insert query
         $query = "INSERT INTO " . $this->table_name . "
                 SET
-            id_ct = :id_ct,
-            id = :id,
-            name = :name,
-            email = :email,
-            message = :message";
+                name = :name,
+                email = :email,
+                message = :message";
     
         // prepare the query
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->id_ct=htmlspecialchars(strip_tags($this->id_ct));
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->email=htmlspecialchars(strip_tags($this->email));
-        $this->cmessage=htmlspecialchars(strip_tags($this->message));
-    
+        $this->message=htmlspecialchars(strip_tags($this->message));
+
         // bind the values
-        $stmt->bindParam(':id_ct', $this->id_ct);
-        $stmt->bindParam(':id', $this->id);
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':message', $this->message);
@@ -104,15 +54,14 @@ class Contact{
             print_r($stmt->errorInfo());
         echo "</pre>";
     }
-    public function readAll($from_record_num, $records_per_page){
-    
-        // query to read all user records, with limit clause for pagination
+
+    function readAll($from_record_num, $records_per_page){
+        // query to read all room records, with limit clause for pagination
         $query = "SELECT
                     id_ct,
-                    id,
                     name,
                     email,
-                    massage
+                    message
                 FROM " . $this->table_name . "
                 ORDER BY id_ct DESC
                 LIMIT ?, ?";
@@ -130,10 +79,10 @@ class Contact{
         // return values
         return $stmt;
     }
-    // used for paging contact
+    // used for paging room
     public function countAll(){
 
-        // query to select all user records
+        // query to select all room records
         $query = "SELECT id_ct FROM " . $this->table_name . "";
     
         // prepare query statement

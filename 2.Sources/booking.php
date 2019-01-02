@@ -1,255 +1,199 @@
+<?php
+include "controller/connection.php";
+include_once "config/core.php"; 
+include_once "config/database.php";
+include_once "objects/booking.php";
+include_once "libs/php/utils.php";
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Booking | Royal Hotel</title>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <link href="./fonts/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="Footer-Basic.css" />
-    <link rel="stylesheet" href="aos.css">
-    <link rel="stylesheet" href="style.css">
+      <meta charset="utf-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Royal-Hotel</title>
+	<!-- Bootstrap Styles-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="css/fontawesome.min.css" rel="stylesheet" />
+        <!-- Custom Styles-->
+    <link href="css/booking.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-<!-- header -->
-    <div class="header-me">
-        <div class="row-me">
-            <div class="logo">
-                <a href="index.php">
-                    <img src="images/logo.png" alt="logo">
-                </a>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a  href="index.php"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    
+					</ul>
+
             </div>
-                  <!-- login -->
-        <div class="login-me">
-            <?php
-                include_once "config/core.php";
-                include_once "login_checker.php";
-                $access_denied = false; 
-            ?>
-            <?php
-        // check if users / customer was logged in
-        // if user was logged in, show "Edit Profile", "Orders" and "Logout" options
-        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true && $_SESSION['access_level']=='Customer'){
-            ?>
-            <a href="login1.php"><button type="button" id="btnlogin"><?php echo $_SESSION['firstname']; ?></button></a>
+
+        </nav>
+       
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            RESERVATION <small></small><hr>
+                        </h1>
+                    </div>
+                </div> 
+                 
+                                 
+            <div class="row">
                 
-            </a>
-            <?php
-                }       
-                // if user was not logged in, show the "login" and "register" options
-                else{
-            ?>
-            <a href="login1.php"><button type="button" id="btnlogin">Login</button></a>
-            <a href="register.php"><button type="button" id="btnregister">Register</button></a>
-            <?php
-                }
-            ?>
-            </div>
-            <!-- menu -->
-            <div class="drop-menu ">
-                <ul class="main-nav">
-                    <li><a href="show-room.php">ROOMS</a></li>
-                    <li><a href="photo-gallery.php">PHOTO GALLERY</a></li>
-                    <li><a href="#">NEWS & EVENT</a></li>
-                    <li><a href="contact-us.php">CONTACT US</a></li>
-                    <a href="booking.php"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
-                </ul>
-                <div class="handle">
-                    <b class="menu">MENU</b>
-                </div>
-            </div>
-        </div>    
-    </div>
-
-<!-- BOOKING -->
-        <div class="gdlr-page-title-wrapper">
-            <div class="gdlr-page-title-overlay"></div>
-            <div class="gdlr-page-title-container container">
-                <h1 class="gdlr-page-title">Booking</h1>
-            </div>
-        </div>
-        <!-- is search -->
-        <div class="content-wrapper">
-            <div class="gdlr-content">
-
-                <div class="with-sidebar-wrapper">
-                    <div class="with-sidebar-container container gdlr-class-no-sidebar">
-                        <div class="with-sidebar-left twelve columns">
-                            <div class="with-sidebar-content twelve columns">
-                                <div class="gdlr-item gdlr-item-start-content" id="gdlr-single-booking-content" data-ajax="https://demo.goodlayers.com/hotelmaster/wp-admin/admin-ajax.php">
-
-                                    <form class="gdlr-reservation-bar" data-action="gdlr_hotel_booking">
-                                        <div class="gdlr-reservation-bar-title">Your Reservation</div>
-                                        <div class="gdlr-reservation-bar-summary-form" ></div>
-                                        <div class="gdlr-reservation-bar-room-form" ></div>
-                                        <div class="gdlr-reservation-bar-date-form">
-                                            <div class="gdlr-reservation-field gdlr-resv-datepicker"><span class="gdlr-reservation-field-title">Check In</span>
-                                                <div class="gdlr-datepicker-wrapper">
-                                                    <input type="text" id="gdlr-check-in" class="gdlr-datepicker" autocomplete="off" data-dfm="d M yy" data-block="[&quot;2018-02-14&quot;,&quot;2018-02-15&quot;]" value="2018-05-03">
-                                                    <input type="hidden" class="gdlr-datepicker-alt" name="gdlr-check-in" autocomplete="off" value="2018-05-03">
-                                                </div>
-                                            </div>
-                                            <div class="gdlr-reservation-field gdlr-resv-combobox "><span class="gdlr-reservation-field-title">Night</span>
-                                                <div class="gdlr-combobox-wrapper">
-                                                    <select name="gdlr-night" id="gdlr-night">
-                                                        <option value="1" selected="">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="gdlr-reservation-field gdlr-resv-datepicker"><span class="gdlr-reservation-field-title">Check Out</span>
-                                                <div class="gdlr-datepicker-wrapper">
-                                                    <input type="text" id="gdlr-check-out" class="gdlr-datepicker" autocomplete="off" data-min-night="1" data-dfm="d M yy" data-block="[&quot;2018-02-14&quot;,&quot;2018-02-15&quot;]" value="2018-05-04">
-                                                    <input type="hidden" class="gdlr-datepicker-alt" name="gdlr-check-out" autocomplete="off" value="2018-05-04">
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="gdlr-reservation-field gdlr-resv-combobox gdlr-reservation-bar-room-number"><span class="gdlr-reservation-field-title">Rooms</span>
-                                                <div class="gdlr-combobox-wrapper">
-                                                    <select name="gdlr-room-number" id="gdlr-room-number">
-                                                        <option value="1" selected="">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="gdlr-reservation-people-amount-wrapper" id="gdlr-reservation-people-amount-wrapper">
-                                                <div class="gdlr-reservation-people-amount">
-                                                    <div class="gdlr-reservation-people-title">Room <span>1</span></div>
-                                                    <div class="gdlr-reservation-field gdlr-resv-combobox "><span class="gdlr-reservation-field-title">Adults</span>
-                                                        <div class="gdlr-combobox-wrapper">
-                                                            <select name="gdlr-adult-number[]">
-                                                                <option value="1">1</option>
-                                                                <option value="2" selected="">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gdlr-reservation-field gdlr-resv-combobox "><span class="gdlr-reservation-field-title">Children</span>
-                                                        <div class="gdlr-combobox-wrapper">
-                                                            <select name="gdlr-children-number[]">
-                                                                <option value="0">0</option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clear"></div>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div><a id="gdlr-reservation-bar-button" class="gdlr-reservation-bar-button gdlr-button with-border" href="#">Check Availability</a>
-                                            <div class="clear"></div>
-                                        </div>
-                                        <div class="gdlr-reservation-bar-service-form" id="gdlr-reservation-bar-service-form"></div>
-                                    </form>
-                                    <div class="gdlr-booking-content">
-                                        <div class="gdlr-booking-process-bar" id="gdlr-booking-process-bar" data-state="1">
-                                            <div data-process="1" class="gdlr-booking-process gdlr-active">1. Choose Date</div>
-                                            <div data-process="2" class="gdlr-booking-process ">2. Choose Room</div>
-                                            <div data-process="3" class="gdlr-booking-process ">3. Make a Reservation</div>
-                                            <div data-process="4" class="gdlr-booking-process ">4. Confirmation</div>
-                                        </div>
-                                        <div class="gdlr-booking-content-wrapper">
-                                            <div class="gdlr-booking-content-inner" id="gdlr-booking-content-inner">
-                                                <div class="gdlr-datepicker-range-wrapper">
-                                                    <div class="gdlr-datepicker-range" id="gdlr-datepicker-range" data-dfm="d M yy" data-block="[&quot;2018-02-14&quot;,&quot;2018-02-15&quot;]"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
+                <div class="col-md-5 col-sm-5">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+						<form name="form" method="post">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type='text' name='firstname' class='form-control' required value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname'], ENT_QUOTES) : "";  ?>" />
+                                
                             </div>
-
-                            <div class="clear"></div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type='text' name='lastname' class='form-control' required value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname'], ENT_QUOTES) : "";  ?>" />
+                                        
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type='text' name='phone_number' class='form-control' required value="<?php echo isset($_POST['phone_number']) ? htmlspecialchars($_POST['phone_number'], ENT_QUOTES) : "";  ?>" />
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type='email' name='email' class='form-control' required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" />
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type='text' name='address' class='form-control' required value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address'], ENT_QUOTES) : "";  ?>" />
+                                
+                            </div>
                         </div>
-
-                        <div class="clear"></div>
                     </div>
                 </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+								<div class="form-group">
+                                    <label>Type Of Room *</label>
+                                    <select name="ten_lp"  class="form-control" required>
+                                        <option value selected ></option>
+                                        <option value="Vip Room">VIP ROOM</option>
+                                        <option value="Double Room">DOUBLE ROOM</option>
+                                        <option value="Single Room">SINGLE ROOM</option>
+                                    </select>
+                              </div>
+							  <div class="form-group">
+                                    <label>No.of Rooms *</label>
+                                    <select name="so_p" class="form-control" required>
+                                        <option value selected ></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                              </div>
+							  <div class="form-group">  
+                                    <label>Check-In</label>
+                                    <input type='date' name='check_in' class='form-control' required value="<?php echo isset($_POST['check_in']) ? htmlspecialchars($_POST['check_in'], ENT_QUOTES) : "";  ?>" />
+                                    
+                               </div>
+							   <div class="form-group">
+                                    <label>Check-Out</label>
+                                    <input type='date' name='check_out' class='form-control' required value="<?php echo isset($_POST['check_out']) ? htmlspecialchars($_POST['check_out'], ENT_QUOTES) : "";  ?>" />
+                                    
+                               </div>
+                       </div>
+                        
+                    </div>
+                </div>
+				
+				
+                <div class="col-md-12 col-sm-12">
+                    <div class="well"><hr>  
+						<input type="submit" name="submit" class="btn btn-primary">
+						<?php
+                            if($_POST){
+    
+                                // get database connection
+                                $database = new Database();
+                                $db = $database->getConnection();
+                            
+                                // initialize objects
+                                $book = new Booking($db);
+                                $utils = new Utils();
+                            
+                                // set book email to detect if it already exists
+                                $book->email=$_POST['email'];
+                            
+                                // check if email already exists
 
+                                $book->firstname=$_POST['firstname'];
+                                $book->lastname=$_POST['lastname'];
+                                $book->ten_lp=$_POST['ten_lp'];
+                                $book->so_p=$_POST['so_p'];
+                                $book->check_in=$_POST['check_in'];
+                                $book->check_out_p=$_POST['check_out'];
+                                $book->phone_number=$_POST['phone_number'];
+                                $book->address=$_POST['address'];
+                                if($book->create()){
+                                    // send confimation email
+                                    $send_to_email=$_POST['email'];
+                                    $body="Hi {$send_to_email}.<br /><br />";
+                                    $body.="
+                                        Congratulations on your successful booking: {$home_url}login.php";
+                                    $subject="Verification Email";
+                                
+                                    if($utils->sendEmailViaPhpMail($send_to_email, $subject, $body)){
+                                        echo "<div class='alert alert-success'>
+                                            Congratulations on your successful booking.
+                                        </div>";
+                                    }
+                                
+                                    else{
+                                        echo "<div class='alert alert-danger'>
+                                            Not Found.
+                                        </div>";
+                                    }
+                                
+                                    // empty posted values
+                                    $_POST=array();
+                                
+                                }else{
+                                    echo "<div class='alert alert-danger' role='alert'>Unable to booking. Please try again.</div>";
+                                }
+                                
+                            }
+						?>
+						</form>
+							
+                    </div>
+                </div>
             </div>
-            <!-- gdlr-content -->
-            <div class="clear"></div>
+                </div>
+					</div>
+            </div>
         </div>
-        <!-- content wrapper -->
-    </div>
-    <!-- body-wrapper -->
-
-    <script type='text/javascript' src='js\jquery\jquery.js'></script>
-    <script type='text/javascript' src='js\jquery\jquery-migrate.min.js'></script>
-    <script type='text/javascript' src='js\jquery\ui\core.min.js'></script>
-    <script type='text/javascript' src='js\jquery\ui\datepicker.min.js'></script>
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var objectL10n = {
-            "closeText": "Done",
-            "currentText": "Today",
-            "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            "monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            "monthStatus": "Show a different month",
-            "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            "dayNamesMin": ["S", "M", "T", "W", "T", "F", "S"],
-            "firstDay": "1"
-        };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='plugins\gdlr-hostel\gdlr-hotel.js'></script>
-    <script type='text/javascript' src='plugins\superfish\js\superfish.js'></script>
-    <script type='text/javascript' src='js\hoverIntent.min.js'></script>
-    <script type='text/javascript' src='plugins\dl-menu\modernizr.custom.js'></script>
-    <script type='text/javascript' src='plugins\dl-menu\jquery.dlmenu.js'></script>
-    <script type='text/javascript' src='js\jquery.easing.js'></script>
-    <script type='text/javascript' src='js\jquery.transit.min.js'></script>
-    <script type='text/javascript' src='plugins\fancybox\jquery.fancybox.pack.js'></script>
-    <script type='text/javascript' src='plugins\fancybox\helpers\jquery.fancybox-media.js'></script>
-    <script type='text/javascript' src='plugins\fancybox\helpers\jquery.fancybox-thumbs.js'></script>
-    <script type='text/javascript' src='plugins\flexslider\jquery.flexslider.js'></script>
-    <script type='text/javascript' src='js\jquery.isotope.min.js'></script>
-    <script type='text/javascript' src='js\gdlr-script.js'></script>
-    <script type='text/javascript' src='plugins\gdlr-portfolio\gdlr-portfolio-script.js'></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script>
-          $(document).ready(function(){
-            $('.menu').click(function(){
-                $('.main-nav').toggleClass('active');
-            });
-          });
-        </script>
+    <script src="js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="js/jquery.metisMenu.js"></script>
+      <!-- Custom Js -->
+    <script src="js/booking.js"></script>
+    
+   
 </body>
 </html>

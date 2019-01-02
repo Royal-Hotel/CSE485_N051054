@@ -17,14 +17,14 @@ $db = $database->getConnection();
 $contact = new Contact($db);
  
 // set page title
-$page_title = "Contact";
+$page_title = "Contacts";
  
 // include page header HTML
 include_once "layout_head.php";
- 
+
 echo "<div class='col-md-12'>";
  
-    // read all contact from the database
+    // read all users from the database
     $stmt = $contact->readAll($from_record_num, $records_per_page);
  
     // count retrieved users
