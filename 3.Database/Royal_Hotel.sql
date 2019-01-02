@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 23, 2018 lúc 10:03 AM
+-- Thời gian đã tạo: Th1 02, 2019 lúc 04:57 PM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 7.2.12
 
@@ -11,20 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 30, 2018 lúc 09:46 AM
--- Phiên bản máy phục vụ: 10.1.37-MariaDB
--- Phiên bản PHP: 7.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -44,11 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contact` (
   `id_ct` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `message` varchar(3000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contact`
+--
+
+INSERT INTO `contact` (`id_ct`, `name`, `email`, `message`) VALUES
+(2, 'Coong ', 'vubacong98@gmail.com', 'dmm');
 
 -- --------------------------------------------------------
 
@@ -58,14 +50,25 @@ CREATE TABLE `contact` (
 
 CREATE TABLE `datphong` (
   `id_dp` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `id_p` int(11) NOT NULL,
-  `Ten_KH` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_lp` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `so_p` int(11) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
-  `contact_number` int(11) NOT NULL,
+  `phone_number` int(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `datphong`
+--
+
+INSERT INTO `datphong` (`id_dp`, `firstname`, `lastname`, `ten_lp`, `so_p`, `check_in`, `check_out`, `phone_number`, `email`, `address`) VALUES
+(3, 'Do', 'Van Sy', 'Vip Room', 1, '2019-01-01', '0000-00-00', 1231241515, '', 'HN'),
+(4, 'Do', 'Van Sy', 'Double Room', 2, '2019-01-01', '0000-00-00', 1231241515, 'vubacong98@gmail.com', ''),
+(5, 'Do', 'Van Sy', 'Vip Room', 5, '2019-01-01', '0000-00-00', 1231241515, 'vubacong98@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -76,12 +79,10 @@ CREATE TABLE `datphong` (
 CREATE TABLE `hoadon` (
   `id_hd` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `Ten_KH` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `id_p` int(11) NOT NULL,
+  `id_lp` int(11) NOT NULL,
   `id_dp` int(11) NOT NULL,
-  `Trang_thai_TT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `check_in` date NOT NULL,
-  `check_out` date NOT NULL
+  `Trang_thai_TT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -125,36 +126,36 @@ CREATE TABLE `phong` (
 --
 
 INSERT INTO `phong` (`id_p`, `ten_p`, `id_lp`, `id_ttp`) VALUES
-(1, 'Phòng A', 1, 1),
-(2, 'Phòng B', 1, 1),
-(3, 'Phòng C', 1, 1),
-(4, 'Phòng D', 1, 2),
-(5, 'Phòng E', 1, 2),
-(6, 'Phòng F', 1, 2),
-(7, 'Phòng G', 1, 3),
-(8, 'Phòng H', 1, 3),
-(9, 'Phòng I', 1, 3),
-(10, 'Phòng K', 1, 1),
-(11, 'Phòng A1', 2, 1),
-(12, 'Phòng B1', 2, 1),
-(13, 'Phòng C1', 2, 1),
-(14, 'Phòng D1', 2, 1),
-(15, 'Phòng E1', 2, 2),
-(16, 'Phòng F1', 2, 2),
-(17, 'Phòng G1', 2, 2),
-(18, 'Phòng H1', 2, 2),
-(19, 'Phòng I1', 2, 2),
-(20, 'Phòng K1', 3, 3),
-(21, 'Phòng A2', 3, 1),
-(22, 'Phòng B2', 3, 1),
-(23, 'Phòng C2', 3, 2),
-(24, 'Phòng D2', 3, 2),
-(25, 'Phòng E2', 3, 2),
-(26, 'Phòng F2', 3, 2),
-(27, 'Phòng G2', 3, 3),
-(28, 'Phòng H2', 3, 2),
-(29, 'Phòng I2', 3, 2),
-(30, 'Phòng K2', 3, 2);
+(1, 'Room A', 1, 1),
+(2, 'Room B', 1, 1),
+(3, 'Room C', 1, 1),
+(4, 'Room D', 1, 2),
+(5, 'Room E', 1, 2),
+(6, 'Room F', 1, 2),
+(7, 'Room G', 1, 3),
+(8, 'Room H', 1, 3),
+(9, 'Room I', 1, 3),
+(10, 'Room K', 1, 1),
+(11, 'Room A1', 2, 1),
+(12, 'Room B1', 2, 1),
+(13, 'Room C1', 2, 1),
+(14, 'Room D1', 2, 1),
+(15, 'Room E1', 2, 2),
+(16, 'Room F1', 2, 2),
+(17, 'Room G1', 2, 2),
+(18, 'Room H1', 2, 2),
+(19, 'Room I1', 2, 2),
+(20, 'Room K1', 3, 3),
+(21, 'Room A2', 3, 1),
+(22, 'Room B2', 3, 1),
+(23, 'Room C2', 3, 2),
+(24, 'Room D2', 3, 2),
+(25, 'Room E2', 3, 2),
+(26, 'Room F2', 3, 2),
+(27, 'Room G2', 3, 3),
+(28, 'Room H2', 3, 2),
+(29, 'Room I2', 3, 2),
+(30, 'Room K2', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -212,8 +213,8 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `contact_number`, `
 (8, 'Kobe Bro', 'Bryant', 'kobe@gmail.com', '09898787674', 'Los Angeles, California', '$2y$10$fmanyjJxNfJ8O3p9jjUixu6EOHkGZrThtcd..TeNz2g.XZyCIuVpm', 'Customer', '', 1, '2015-03-26 11:28:01', '2015-03-25 13:39:52'),
 (9, 'Tim', 'Duncan', 'tim@example.com', '9999999', 'San Antonio, Texas, USA', '$2y$10$9OSKHLhiDdBkJTmd3VLnQeNPCtyH1IvZmcHrz4khBMHdxc8PLX5G6', 'Customer', '0X4JwsRmdif8UyyIHSOUjhZz9tva3Czj', 1, '2016-05-26 01:25:59', '2016-05-25 03:25:59'),
 (10, 'Tony', 'Parker', 'tony@example.com', '8888888', 'Blk 24 A Lot 6 Ph 3\r\nPeace Village, San Luis', '$2y$10$lBJfvLyl/X5PieaztTYADOxOQeZJCqETayF.O9ld17z3hcKSJwZae', 'Customer', 'THM3xkZzXeza5ISoTyPKl6oLpVa88tYl', 1, '2016-05-26 01:29:01', '2016-06-13 03:46:33'),
-(11, 'Cong', 'To', 'vubacong98@gmail.com', '0984757368', 'Ha Noi', '$2y$10$hWJViVJgFbhTTkzxNwxyS.b27qA44XQ9sB86YR3u.DIsHVdUUrhii', 'Admin', 'SMVMR2xdHLvcIMK9gdc4aq0sWrC8N7uu', 1, '2018-12-30 16:49:09', '2018-12-30 08:51:56'),
-(15, 'Do', 'Van Sy', 'anhcongbn98@gmail.com', '0984757368', 'Ha Noi', '$2y$10$sxGkBuOTlQzZm2glDi5ATuQMP.vkv6AkRF.m633S52HvWD/cgMema', 'Customer', 'zvOfEbZIph49t8fni2e9vpYNIW32pcKY', 0, '2018-12-30 17:36:45', '2018-12-30 09:36:45');
+(11, 'Cong', 'To', 'vubacong98@gmail.com', '0984757368', 'Ha Noi', '$2y$10$hWJViVJgFbhTTkzxNwxyS.b27qA44XQ9sB86YR3u.DIsHVdUUrhii', 'Admin', '9OMWCXqhNUVjd7enUExq04e8qGJv1QFU', 1, '2018-12-30 16:49:09', '2018-12-31 18:45:13'),
+(22, 'Do', 'Van Sy', 'anhcongbn98@gmail.com', '0984757368', 'HN', '$2y$10$uDUw1i9RkWShqTHW2c7a7OrEqSAx9jIuUYr5RIR/FpxQd/G.mqFFu', 'Customer', 'KLCzKkssiqAjKJMRCod4e95z1hYK2wF3', 1, '2019-01-01 03:11:35', '2018-12-31 19:12:12');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -223,16 +224,13 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `contact_number`, `
 -- Chỉ mục cho bảng `contact`
 --
 ALTER TABLE `contact`
-  ADD PRIMARY KEY (`id_ct`),
-  ADD KEY `CT1_PK` (`id`);
+  ADD PRIMARY KEY (`id_ct`);
 
 --
 -- Chỉ mục cho bảng `datphong`
 --
 ALTER TABLE `datphong`
-  ADD PRIMARY KEY (`id_dp`),
-  ADD KEY `DP1_FK` (`id_p`),
-  ADD KEY `DP2_FK` (`id`);
+  ADD PRIMARY KEY (`id_dp`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
@@ -241,7 +239,8 @@ ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`id_hd`),
   ADD KEY `HD1_FK` (`id_p`),
   ADD KEY `HD2_FK` (`id_dp`),
-  ADD KEY `HD3_FK` (`id`);
+  ADD KEY `HD3_FK` (`id`),
+  ADD KEY `HD4_PK` (`id_lp`);
 
 --
 -- Chỉ mục cho bảng `loaiphong`
@@ -277,13 +276,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id_ct` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `datphong`
 --
 ALTER TABLE `datphong`
-  MODIFY `id_dp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `hoadon`
@@ -313,23 +312,11 @@ ALTER TABLE `trangthaiphong`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
-
---
--- Các ràng buộc cho bảng `contact`
---
-ALTER TABLE `contact`
-  ADD CONSTRAINT `CT1_PK` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `datphong`
---
-ALTER TABLE `datphong`
-  ADD CONSTRAINT `DP1_PK` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `hoadon`
@@ -337,7 +324,8 @@ ALTER TABLE `datphong`
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `HD1_PK` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `HD2_PK` FOREIGN KEY (`id_dp`) REFERENCES `datphong` (`id_dp`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `HD3_PK` FOREIGN KEY (`id_p`) REFERENCES `phong` (`id_p`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `HD3_PK` FOREIGN KEY (`id_p`) REFERENCES `phong` (`id_p`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `HD4_PK` FOREIGN KEY (`id_lp`) REFERENCES `loaiphong` (`id_lp`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `phong`

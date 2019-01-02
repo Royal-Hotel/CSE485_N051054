@@ -2,10 +2,9 @@
     <form action="Search.php" method="get">
         Search: <input type="text" name="search" />
         <input type="submit" name="ok" value="search" />
-        <a href="../register.php"><button type="text-align=left;" id="btnlogin">Add</button></a>
     </form>
 </div>
-<br>
+<a href=""><button style='margin-left: 1070px;' type='button'>Add</button></a>
 <?php
 if($num>0){
  

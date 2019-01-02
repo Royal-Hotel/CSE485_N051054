@@ -23,15 +23,15 @@
                     <a href="<?php echo $home_url; ?>admin/read_users.php">Users</a>
                 </li>
 
-                <!-- highlight for contact related pages -->
-                <li <?php
-                        echo $page_title=="Contact" ? "class='active'" : ""; ?> >
-                    <a href="<?php echo $home_url; ?>admin/read_contact.php">Contact</a>
-                </li>
-
                 <!-- highlight for Rooms related pages -->
                 <li <?php echo $page_title=="Rooms" ? "class='active'" : ""; ?> >
                     <a href="<?php echo $home_url; ?>admin/read_room.php">Rooms</a>
+                </li>
+
+                <!-- highlight for Booking related pages -->
+                <li <?php
+                        echo $page_title=="Booking" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_booking.php">Booking</a>
                 </li>
 
                 <!-- highlight for Payment related pages -->
@@ -40,10 +40,10 @@
                     <a href="<?php echo $home_url; ?>admin/read_payment.php">Payment</a>
                 </li>
 
-                <!-- highlight for Booking related pages -->
-                <li <?php
-                        echo $page_title=="Booking" ? "class='active'" : ""; ?> >
-                    <a href="<?php echo $home_url; ?>admin/read_booking.php">Booking</a>
+                 <!-- highlight for contact related pages -->
+                 <li <?php
+                        echo $page_title=="Contact" ? "class='active'" : ""; ?> >
+                    <a href="<?php echo $home_url; ?>admin/read_contact.php">Contact</a>
                 </li>
             
             </ul>
