@@ -101,7 +101,7 @@ class Booking{
                     email,
                     address
                 FROM " . $this->table_name . "
-                ORDER BY id_dp DESC
+                ORDER BY id_dp ASC
                 LIMIT ?, ?";
     
         // prepare query statement

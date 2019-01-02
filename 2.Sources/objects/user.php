@@ -146,7 +146,7 @@ class User{
                     access_level,
                     created
                 FROM " . $this->table_name . "
-                ORDER BY id DESC
+                ORDER BY id ASC
                 LIMIT ?, ?";
     
         // prepare query statement
@@ -301,11 +301,11 @@ class User{
     
         // query to select all user records
         $query = "UPDATE " . $this->table_name . "
-        SET firstname =:firstname;
-        SET lastname =:lastname;
-        SET email =:email;
-        SET contact_number =:contact_number;
-        SET access_level =:access_level";
+        SET firstname =:firstname,
+            lastname =:lastname,
+            email =:email,
+            contact_number =:contact_number,
+            access_level =:access_level";
     
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -322,6 +322,77 @@ class User{
         $stmt->bindParam(':contact_number', $this->contact_number);
         $stmt->bindParam(':access_level', $this->access_level);
 
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+    function updateUser(){
+    
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    firstname = :firstname,
+                    lastname = :lastname,
+                    contact_number = :contact_number,
+                    address = :address,
+                    access_level = :access_level,
+                    password = :password
+                WHERE
+                    email = :email";
+    
+        // prepare the query/ chuẩn bị truy vấn
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->access_level=htmlspecialchars(strip_tags($this->access_level));
+        $this->firstname=htmlspecialchars(strip_tags($this->firstname));
+        $this->lastname=htmlspecialchars(strip_tags($this->lastname));
+        $this->contact_number=htmlspecialchars(strip_tags($this->contact_number));
+        $this->address=htmlspecialchars(strip_tags($this->address));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+        $this->password=htmlspecialchars(strip_tags($this->password));
+    
+        // bind the values from the form/ liên kết các giá trị từ biểu mẫu
+        $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+        $stmt->bindParam(':password', $password_hash);
+        $stmt->bindParam(':access_level', $this->access_level);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':firstname', $this->firstname);
+        $stmt->bindParam(':lastname', $this->lastname);
+        $stmt->bindParam(':contact_number', $this->contact_number);
+        $stmt->bindParam(':address', $this->address);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+    function deleteUser(){
+        
+        // update query
+        $query = "DELETE FROM
+                    " . $this->table_name . "
+                WHERE
+                    access_level=:access_level,
+                    email = :email";
+    
+        // prepare the query/ chuẩn bị truy vấn
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->access_level=htmlspecialchars(strip_tags($this->access_level));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+    
+        // bind the values from the form/ liên kết các giá trị từ biểu mẫu
+        $stmt->bindParam(':access_level', $this->access_level);
+        $stmt->bindParam(':email', $this->email);
+    
+        // execute the query
         if($stmt->execute()){
             return true;
         }

@@ -4,7 +4,9 @@
         <input type="submit" name="ok" value="search" />
     </form>
 </div>
-<a href=""><button style='margin-left: 1070px;' type='button'>Add</button></a>
+<a href="add_room.php"><button style='margin-left: 940px;' type='button'>Add</button></a>
+<a href='update_room.php'><button  type='button'>Update</button></a>  
+<a href='delete_room.php'><button  type='button'>Delete</button></a>
 <?php
 if($num>0){
  
@@ -12,10 +14,10 @@ if($num>0){
  
     // table headers
     echo "<tr>";
+        echo "<th>IDRoom</th>";
         echo "<th>Name</th>";
-        echo "<th>ID_LoaiPhong</th>";
-        echo "<th>ID_TrangThaiPhong</th>";
-        echo "<th>Action</th>";
+        echo "<th>IDStyleRoom</th>";
+        echo "<th>IDStatusRoom</th>";
 
     echo "</tr>";
  
@@ -25,10 +27,10 @@ if($num>0){
  
         // display user details
         echo "<tr>";
+            echo "<td>{$id_p}</td>";
             echo "<td>{$ten_p}</td>";
             echo "<td>{$id_lp}</td>";
             echo "<td>{$id_ttp}</td>";
-            echo "<td><a href=''>   Update</a>   |<a href=''> Delete</a> </td>";
         echo "</tr>";
         }
  

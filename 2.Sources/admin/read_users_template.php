@@ -4,7 +4,9 @@
         <input type="submit" name="ok" value="search" />
     </form>
 </div>
-<a href=""><button style='margin-left: 1070px;' type='button'>Add</button></a>
+<a href="add_user.php"><button style='margin-left: 940px;' type='button'>Add</button></a>
+<a href='update_user.php'><button  type='button'>Update</button></a>  
+<a href='delete_user.php'><button  type='button'>Delete</button></a>
 <?php
 if($num>0){
  
@@ -17,7 +19,6 @@ if($num>0){
         echo "<th>Email</th>";
         echo "<th>Contact Number</th>";
         echo "<th>Access Level</th>";
-        echo "<th>Action</th>";
 
     echo "</tr>";
  
@@ -32,7 +33,6 @@ if($num>0){
             echo "<td>{$email}</td>";
             echo "<td>{$contact_number}</td>";
             echo "<td>{$access_level}</td>";
-            echo "<td><a href=''>   Update</a>   |<a href=''> Delete</a> </td>";
         echo "</tr>";
         }
  

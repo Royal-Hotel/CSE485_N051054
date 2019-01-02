@@ -63,7 +63,7 @@ class Contact{
                     email,
                     message
                 FROM " . $this->table_name . "
-                ORDER BY id_ct DESC
+                ORDER BY id_ct ASC
                 LIMIT ?, ?";
     
         // prepare query statement

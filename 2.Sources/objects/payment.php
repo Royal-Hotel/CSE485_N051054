@@ -81,7 +81,7 @@ class Payment{
                 inner join datphong dp on hd.id_dp = dp.id_dp 
                 inner join phong p on hd.id_p = p.id_p 
                 inner join loaiphong lp on hd.id_lp = lp.id_lp
-                ORDER BY id_hd DESC  LIMIT ?, ?";
+                ORDER BY id_hd ASC  LIMIT ?, ?";
     
         // prepare query statement
         $stmt = $this->conn->prepare( $query );

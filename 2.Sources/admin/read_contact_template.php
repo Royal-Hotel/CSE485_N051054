@@ -28,7 +28,7 @@ if($num>0){
             echo "<td>{$name}</td>";
             echo "<td>{$email}</td>";
             echo "<td>{$message}</td>";
-            echo "<td><a href=''>   Update</a>   |<a href=''> Delete</a>   |<a href=''> Rep</a> </td>";
+            echo "<td><div><a href='Del_ct.php'> Delete</a>   |<a href=''> Rep</a> </td>";
         echo "</tr>";
         }
  
