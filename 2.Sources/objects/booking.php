@@ -8,7 +8,7 @@ class Booking{
  
     // object properties
     public $id_dp;
-    public $id_p;
+
     public $firstname;
     public $lastname;
     public $ten_lp;
@@ -17,7 +17,7 @@ class Booking{
     public $check_out;
     public $phone_number;
     public $email;
-    public $address;
+    public $statusBooking;
  
     // constructor
     public function __construct($db){
@@ -39,8 +39,8 @@ class Booking{
                 check_in = :check_in,
                 check_out = :check_out,
                 phone_number = :phone_number,
-                email =:email;
-                address = :address";
+                email =:email,
+                statusBooking =:statusBooking";
     
         // prepare the query
         $stmt = $this->conn->prepare($query);
@@ -56,7 +56,7 @@ class Booking{
         $this->check_out=htmlspecialchars(strip_tags($this->check_out));
         $this->phone_number=htmlspecialchars(strip_tags($this->phone_number));
         $this->email=htmlspecialchars(strip_tags($this->email));
-        $this->address=htmlspecialchars(strip_tags($this->address));
+        $this->statusBooking=htmlspecialchars(strip_tags($this->statusBooking));
 
         // bind the values
         $stmt->bindParam(':id_dp', $this->id_dp);
@@ -69,7 +69,7 @@ class Booking{
         $stmt->bindParam(':check_out', $this->check_out);
         $stmt->bindParam(':phone_number', $this->phone_number);
         $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':address', $this->address);
+        $stmt->bindParam(':statusBooking', $this->statusBooking);
     
         // execute the query, also check if query was successful
         if($stmt->execute()){
@@ -99,10 +99,10 @@ class Booking{
                     check_out,
                     phone_number,
                     email,
-                    address
-                FROM " . $this->table_name . "
-                ORDER BY id_dp ASC
-                LIMIT ?, ?";
+                    statusBooking
+                    FROM " . $this->table_name . "
+                    ORDER BY id_dp ASC
+                    LIMIT ?, ?";
     
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
@@ -148,7 +148,7 @@ class Booking{
                 check_in,
                 check_out,
                 phone_number,
-                address
+                statusBooking
                 FROM " . $this->table_name . "
                 WHERE email = ?
                 LIMIT 0,1";
@@ -184,13 +184,42 @@ class Booking{
             $this->check_in = $row['check_in'];
             $this->check_out = $row['check_out'];
             $this->phone_number = $row['phone_number'];
-            $this->address = $row['address'];
+            $this->statusBooking = $row['statusBooking'];
     
             // return true because email exists in the database
             return true;
         }
     
         // return false if email does not exist in the database
+        return false;
+    }
+    
+    function updateStatus(){
+    
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    status = :status
+                WHERE
+                    email = :email";
+    
+        // prepare the query/ chuẩn bị truy vấn
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+    
+        // bind the values from the form/ liên kết các giá trị từ biểu mẫu
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':email', $this->email);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
         return false;
     }
 }

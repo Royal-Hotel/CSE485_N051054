@@ -14,10 +14,11 @@ if($num>0){
  
     // table headers
     echo "<tr>";
-        echo "<th>IDRoom</th>";
+        echo "<th>ID Room</th>";
         echo "<th>Name</th>";
-        echo "<th>IDStyleRoom</th>";
-        echo "<th>IDStatusRoom</th>";
+        echo "<th>Style Room</th>";
+        echo "<th>Room Rates</th>";
+        echo "<th>Status Room</th>";
 
     echo "</tr>";
  
@@ -29,8 +30,9 @@ if($num>0){
         echo "<tr>";
             echo "<td>{$id_p}</td>";
             echo "<td>{$ten_p}</td>";
-            echo "<td>{$id_lp}</td>";
-            echo "<td>{$id_ttp}</td>";
+            echo "<td>{$loaiphong}</td>";
+            echo "<td>{$giaphong}</td>";
+            echo "<td>{$status}</td>";
         echo "</tr>";
         }
  
