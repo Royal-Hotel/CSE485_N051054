@@ -10,10 +10,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+<!-- style -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/fontawesome.css">
     <link rel="stylesheet" href="Footer-Basic.css" />
     <link rel="stylesheet" href="aos.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="room.css">
 </head>
 <body>
 <!-- header -->
@@ -26,35 +30,15 @@
             </div>
             <!-- login -->
             <div class="login-me">
-                <?php
-                    include_once "config/core.php";
-                    include_once "login_checker.php";
-                    $access_denied = false; 
-                ?>
-                <?php
-            // check if users / customer was logged in
-            // if user was logged in, show "Edit Profile", "Orders" and "Logout" options
-            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true && $_SESSION['access_level']=='Customer'){
-                ?>
-                <a href="login1.php"><button type="button" id="btnlogin"><?php echo $_SESSION['firstname']; ?></button></a>
-                </a>
-                <?php
-                    }       
-                    // if user was not logged in, show the "login" and "register" options
-                    else{
-                ?>
-                <a href="login1.php"><button type="button" id="btnlogin">Login</button></a>
-                <a href="register.php"><button type="button" id="btnregister">Register</button></a>
-                <?php
-                    }
-                ?>
+                <a href="#"><button type="button" id="btnlogin" >Login</button></a>
+                <a href="#"><button type="button" id="btnregister">Register</button></a>
             </div>
             <!-- menu -->
             <div class="drop-menu ">
                 <ul class="main-nav">
                     <li><a href="show-room.php">ROOMS</a></li>
                     <li><a href="photo-gallery.php">PHOTO GALLERY</a></li>
-                    <li><a href="#">NEWS & EVENT</a></li>
+                    <li><a href="new-event.php">NEWS & EVENT</a></li>
                     <li><a href="contact-us.php">CONTACT US</a></li>
                     <a href="booking.php"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
                 </ul>
@@ -70,37 +54,110 @@
         #qwe{ height: 120px;}
     </style>
 </div>
-<div class="room-me">
 
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "royal_hotel";
+ <!-- rooms & rates -->
+ 	<div class="room"><hr>
+				<h2 style="font-size:40px; text-align:center">Rooms And Rates</h2><hr>
+				<div class="priceing-table-main">
+					<div class="col-md-3 price-grid ">
+						<div class="price-block agile">
+							<div class="price-gd-top">
+							<img src="images/room1.png" alt="" class="img-responsive" />
+								<h4>Deluxe Room</h4>
+							</div>
+							<div class="price-gd-bottom">
+								<div class="price-list">
+										<ul>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+									</ul>
+							</div>
+							<!-- <div class="price-selet"> -->
+								<h3><span>$</span>300</h3>
+								<a href="booking.php"><button>Book Now<button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+					<div class="col-md-3 price-grid lost">
+						<div class="price-block agile">
+							<div class="price-gd-top">
+							<img src="images/room5.png" alt=" " class="img-responsive" />
+								<h4>Vip Room</h4>
+							</div>
+							<div class="price-gd-bottom">
+								<div class="price-list">
+									<ul>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+									</ul>
+								</div>
+								<div class="price-selet">
+									<h3><span>$</span>250</h3>
+									<a href="booking.php"><button>Book Now<button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 price-grid wthree lost">
+						<div class="price-block agile">
+							<div class="price-gd-top ">
+								<img src="images/room3.png" alt=" " class="img-responsive" />
+								<h4>Double Room</h4>
+							</div>
+							<div class="price-gd-bottom">
+								<div class="price-list">
+									<ul>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+									</ul>
+								</div>
+								<div class="price-selet">
+									<h3><span>$</span>200</h3>
+									<a href="booking.php"><button>Book Now<button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 price-grid wthree lost">
+							<div class="price-block agile">
+								<div class="price-gd-top ">
+									<img src="images/room7.png" alt=" " class="img-responsive" />
+									<h4>Single Room</h4>
+								</div>
+								<div class="price-gd-bottom">
+									<div class="price-list">
+										<ul>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+										</ul>
+									</div>
+									<div class="price-selet">
+										<h3><span>$</span>100</h3>
+										<a href="booking.php"><button>Book Now<button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"> 
 
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password,$database);
+						</div>
+						<hr>	
 
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        ?>
-        <?php
-            $res = mysqli_query($conn,"SELECT * FROM loaiphong");
-            echo "<table>";
-            while($row=mysqli_fetch_array($res))
-            {
-                echo "<tr>";
-                echo "<td>"; ?> <img id="show-room-me"style="padding:20px;"src="<?php echo $row["img"]; ?>" height="500" witdh="500"> <?php echo "</td>";
-                echo "<td>"; echo $row["ten_lp"]; echo "    giá   "; echo $row["gia_lp"]; echo " <a href='booking.php'><button>BOOK NOW </button></a>"; echo "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-            $conn->close();
-        ?>
-</div>
+			</div>
+	 <!--// rooms & rates -->
 <!-- footer -->
         <div class="footer-basic">
             <footer>

@@ -56,7 +56,7 @@
                 <ul class="main-nav">
                     <li><a href="show-room.php">ROOMS</a></li>
                     <li><a href="photo-gallery.php">PHOTO GALLERY</a></li>
-                    <li><a href="#">NEWS & EVENT</a></li>
+                    <li><a href="new-event.php">NEWS & EVENT</a></li>
                     <li><a href="contact-us.php">CONTACT US</a></li>
                     <a href="booking.php"><button  id="btn-booking"><b>BOOK A ROOMS</b></button></a>
               </ul>
