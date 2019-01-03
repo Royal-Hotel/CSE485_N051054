@@ -11,7 +11,6 @@ include_once "login_checker.php";
 // include classes
 include_once '../config/database.php';
 include_once '../objects/room.php';
-include_once "../libs/php/utils.php";
  
 // include page header HTML
 include_once "layout_head.php";
@@ -32,11 +31,11 @@ echo "<div class='col-md-12'>";
     
         // check if ten_p already exists
         if($room->nameExists()){
-            $room->id_p=$_POST['id_p'];
-            $room->id_lp=$_POST['id_lp'];
-            $room->id_ttp=$_POST['id_ttp'];
+            $room->loaiphong=$_POST['loaiphong'];
+            $room->giaphong=$_POST['giaphong'];
+            $room->status=$_POST['status'];
             // create the ten_p
-            if($ten_p->create()){
+            if($room->create()){
                 echo "<div class='alert alert-success' role='alert'> Create room complete! </div>";
                 // empty posted values
                 $_POST=array();
@@ -52,18 +51,23 @@ echo "<div class='col-md-12'>";
         <table class='table table-responsive'>
     
             <tr>
-                <td class='width-30-percent'>Name Room</td>
+                <td class='width-30-percent'>Name</td>
                 <td><input type='text' name='ten_p' class='form-control' required value="<?php echo isset($_POST['ten_p']) ? htmlspecialchars($_POST['ten_p'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
             <tr>
-                <td>Kind Of Room</td>
-                <td><input type='text' name='id_lp' class='form-control' required value="<?php echo isset($_POST['id_lp']) ? htmlspecialchars($_POST['id_lp'], ENT_QUOTES) : "";  ?>" /></td>
+                <td>Style Room</td>
+                <td><input type='text' name='loaiphong' class='form-control' required value="<?php echo isset($_POST['loaiphong']) ? htmlspecialchars($_POST['loaiphong'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
             <tr>
-                <td>Room Status</td>
-                <td><input type='text' name='id_ttp' class='form-control' required value="<?php echo isset($_POST['id_ttp']) ? htmlspecialchars($_POST['id_ttp'], ENT_QUOTES) : "";  ?>" /></td>
+                <td>Room Rates</td>
+                <td><input type='text' name='giaphong' class='form-control' required value="<?php echo isset($_POST['giaphong']) ? htmlspecialchars($_POST['giaphong'], ENT_QUOTES) : "";  ?>" /></td>
+            </tr>
+
+            <tr>
+                <td>Status Room</td>
+                <td><input type='text' name='status' class='form-control' required value="<?php echo isset($_POST['status']) ? htmlspecialchars($_POST['status'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
             <tr>

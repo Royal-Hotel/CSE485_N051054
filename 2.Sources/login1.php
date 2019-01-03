@@ -30,14 +30,12 @@ echo "<div class='col-md-12'>";
             echo "<strong>You are already logged in.</strong>";
         echo "</div>";
     }
- 
+    
     // content once logged in
     echo "<div class='alert alert-info'>";
-        echo "Content when logged in will be here. For example, your premium products or services.";
+        echo "<div>Hi :" . $_SESSION['firstname'] . "</div>";
     echo "</div>";
- 
-echo "</div>";
- 
+   
 // footer HTML and JavaScript codes
 include 'layout_foot.php';
 ?>

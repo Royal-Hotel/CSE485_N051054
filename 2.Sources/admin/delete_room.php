@@ -56,7 +56,7 @@ echo "<div class='col-md-12'>";
         <table class='table table-responsive'>
 
             <tr>
-                <td>Name of Room</td>
+                <td>Name</td>
                 <td><input type='text' name='ten_p' class='form-control' required value="<?php echo isset($_POST['ten_p']) ? htmlspecialchars($_POST['ten_p'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>    
     

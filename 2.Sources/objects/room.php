@@ -9,8 +9,9 @@ class Room{
     // object properties
     public $id_p;
     public $ten_p;
-    public $id_lp;
-    public $id_ttp;
+    public $loaiphong;
+    public $giaphong;
+    public $status;
  
     // constructor
     public function __construct($db){
@@ -21,7 +22,7 @@ class Room{
     function nameExists(){
 
         // query to check if ten_p exists
-        $query = "SELECT id_p, id_lp, id_ttp
+        $query = "SELECT id_p, loaiphong, giaphong,status
                 FROM " . $this->table_name . "
                 WHERE ten_p = ?
                 LIMIT 0,1";
@@ -49,8 +50,9 @@ class Room{
     
             // assign values to object properties
             $this->id_p = $row['id_p'];
-            $this->id_lp = $row['id_lp'];
-            $this->id_ttp = $row['id_ttp'];
+            $this->loaiphong = $row['loaiphong'];
+            $this->giaphong = $row['giaphong'];
+            $this->status = $row['status'];
     
             // return true because ten_p exists in the database
             return true;
@@ -66,21 +68,24 @@ class Room{
         $query = "INSERT INTO " . $this->table_name . "
                 SET
             ten_p = :ten_p,
-            id_lp = :id_lp,
-            id_ttp = :id_ttp";
+            loaiphong = :loaiphong,
+            giaphong = :giaphong,
+            status = :status";
     
         // prepare the query
         $stmt = $this->conn->prepare($query);
     
         // sanitize
         $this->ten_p=htmlspecialchars(strip_tags($this->ten_p));
-        $this->id_lp=htmlspecialchars(strip_tags($this->id_lp));
-        $this->id_ttp=htmlspecialchars(strip_tags($this->id_ttp));
+        $this->loaiphong=htmlspecialchars(strip_tags($this->loaiphong));
+        $this->giaphong=htmlspecialchars(strip_tags($this->giaphong));
+        $this->status=htmlspecialchars(strip_tags($this->status));
 
         // bind the values
         $stmt->bindParam(':ten_p', $this->ten_p);
-        $stmt->bindParam(':id_lp', $this->id_lp);
-        $stmt->bindParam(':id_ttp', $this->id_ttp);
+        $stmt->bindParam(':loaiphong', $this->loaiphong);
+        $stmt->bindParam(':giaphong', $this->giaphong);
+        $stmt->bindParam(':status', $this->status);
     
         // execute the query, also check if query was successful
         if($stmt->execute()){
@@ -102,8 +107,9 @@ class Room{
         $query = "SELECT
                     id_p,
                     ten_p,
-                    id_lp,
-                    id_ttp
+                    loaiphong,
+                    giaphong,
+                    status
                 FROM " . $this->table_name . "
                 ORDER BY id_p ASC
                 LIMIT ?, ?";
@@ -146,8 +152,9 @@ class Room{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    id_lp = :id_lp,
-                    id_ttp = :id_ttp
+                    loaiphong = :loaiphong,
+                    giaphong = :giaphong,
+                    status = :status
                 WHERE
                     ten_p = :ten_p";
     
@@ -155,13 +162,15 @@ class Room{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->id_lp=htmlspecialchars(strip_tags($this->id_lp));
-        $this->id_ttp=htmlspecialchars(strip_tags($this->id_ttp));
+        $this->loaiphong=htmlspecialchars(strip_tags($this->loaiphong));
+        $this->giaphong=htmlspecialchars(strip_tags($this->giaphong));
+        $this->status=htmlspecialchars(strip_tags($this->status));
         $this->ten_p=htmlspecialchars(strip_tags($this->ten_p));
     
         // bind the values from the form/ liên kết các giá trị từ biểu mẫu
-        $stmt->bindParam(':id_lp', $this->id_lp);
-        $stmt->bindParam(':id_ttp', $this->id_ttp);
+        $stmt->bindParam(':loaiphong', $this->loaiphong);
+        $stmt->bindParam(':giaphong', $this->giaphong);
+        $stmt->bindParam(':status', $this->status);
         $stmt->bindParam(':ten_p', $this->ten_p);
     
         // execute the query

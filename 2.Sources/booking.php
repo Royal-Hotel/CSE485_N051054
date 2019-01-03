@@ -73,11 +73,6 @@ include_once "libs/php/utils.php";
                                 <input type='email' name='email' class='form-control' required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" />
                                 
                             </div>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type='text' name='address' class='form-control' required value="<?php echo isset($_POST['address']) ? htmlspecialchars($_POST['address'], ENT_QUOTES) : "";  ?>" />
-                                
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,9 +140,9 @@ include_once "libs/php/utils.php";
                                 $book->ten_lp=$_POST['ten_lp'];
                                 $book->so_p=$_POST['so_p'];
                                 $book->check_in=$_POST['check_in'];
-                                $book->check_out_p=$_POST['check_out'];
+                                $book->check_out=$_POST['check_out'];
                                 $book->phone_number=$_POST['phone_number'];
-                                $book->address=$_POST['address'];
+                                $book->statusBooking=0;
                                 if($book->create()){
                                     // send confimation email
                                     $send_to_email=$_POST['email'];

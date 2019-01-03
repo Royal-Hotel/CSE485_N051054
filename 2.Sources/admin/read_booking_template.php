@@ -13,7 +13,7 @@ if($num>0){
         echo "<th>Check Out</th>";
         echo "<th>Phone</th>";
         echo "<th>Email</th>";
-        echo "<th>Address</th>";
+        echo "<th>Status</th>";
         echo "<th>Action</th>";
 
     echo "</tr>";
@@ -31,8 +31,10 @@ if($num>0){
             echo "<td>{$check_out}</td>";
             echo "<td>{$phone_number}</td>";
             echo "<td>{$email}</td>";
-            echo "<td>{$address}</td>";
-            echo "<td><a href=''>   Yes</a>   |<a href=''> No</a> </td>";
+            echo "<td>{$statusBooking}</td>";
+            echo "<td>
+                <a href='read_payment.php'>Yes</a> | <a href=''> No</a>
+            </td>";
         echo "</tr>";
         }
  

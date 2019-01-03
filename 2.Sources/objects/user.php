@@ -378,19 +378,16 @@ class User{
         $query = "DELETE FROM
                     " . $this->table_name . "
                 WHERE
-                    access_level=:access_level,
-                    email = :email";
+                    id = :id";
     
         // prepare the query/ chuẩn bị truy vấn
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->access_level=htmlspecialchars(strip_tags($this->access_level));
-        $this->email=htmlspecialchars(strip_tags($this->email));
+        $this->id=htmlspecialchars(strip_tags($this->id));
     
         // bind the values from the form/ liên kết các giá trị từ biểu mẫu
-        $stmt->bindParam(':access_level', $this->access_level);
-        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':id', $this->id);
     
         // execute the query
         if($stmt->execute()){

@@ -34,8 +34,9 @@ echo "<div class='col-md-12'>";
     
         // check if email already exists
         if($room->nameExists()){
-            $room->id_lp=$_POST['id_lp'];
-            $room->id_ttp=$_POST['id_ttp'];
+            $room->loaiphong=$_POST['loaiphong'];
+            $room->giaphong=$_POST['giaphong'];
+            $room->status=$_POST['status'];
 
             // create the room
             if($room->updateRoom()){
@@ -62,23 +63,23 @@ echo "<div class='col-md-12'>";
         <table class='table table-responsive'>
 
             <tr>
-                <td>IDRoom</td>
-                <td><input type='text' name='id_p' class='form-control' required value="<?php echo isset($_POST['id_p']) ? htmlspecialchars($_POST['id_p'], ENT_QUOTES) : "";  ?>" /></td>
-            </tr>    
-    
-            <tr>
-                <td class='width-30-percent'>NameRoom</td>
+                <td class='width-30-percent'>Name</td>
                 <td><input type='text' name='ten_p' class='form-control' required value="<?php echo isset($_POST['ten_p']) ? htmlspecialchars($_POST['ten_p'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
             <tr>
-                <td>IDStyleRoom</td>
-                <td><input type='text' name='id_lp' class='form-control' required value="<?php echo isset($_POST['id_lp']) ? htmlspecialchars($_POST['id_lp'], ENT_QUOTES) : "";  ?>" /></td>
+                <td>Style Room</td>
+                <td><input type='text' name='loaiphong' class='form-control' required value="<?php echo isset($_POST['loaiphong']) ? htmlspecialchars($_POST['loaiphong'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
-    
+
             <tr>
-                <td>IDStatusRoom</td>
-                <td><input type='text' name='id_ttp' class='form-control' required value="<?php echo isset($_POST['id_ttp']) ? htmlspecialchars($_POST['id_ttp'], ENT_QUOTES) : "";  ?>" /></td>
+                <td>Room Rates</td>
+                <td><input type='text' name='giaphong' class='form-control' required value="<?php echo isset($_POST['giaphong']) ? htmlspecialchars($_POST['giaphong'], ENT_QUOTES) : "";  ?>" /></td>
+            </tr>
+
+            <tr>
+                <td>Status Room</td>
+                <td><input type='text' name='status' class='form-control' required value="<?php echo isset($_POST['status']) ? htmlspecialchars($_POST['status'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
             <tr>
