@@ -89,6 +89,7 @@ include_once "libs/php/utils.php";
                                     <label>Type Of Room *</label>
                                     <select name="ten_lp"  class="form-control" required>
                                         <option value selected ></option>
+                                        <option value="Deluxe Room">DELUXE ROOM</option>
                                         <option value="Vip Room">VIP ROOM</option>
                                         <option value="Double Room">DOUBLE ROOM</option>
                                         <option value="Single Room">SINGLE ROOM</option>
