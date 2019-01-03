@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 03, 2019 lúc 03:56 PM
+-- Thời gian đã tạo: Th1 03, 2019 lúc 05:30 PM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 7.2.12
 
@@ -72,6 +72,14 @@ CREATE TABLE `hoadon` (
   `id` int(11) NOT NULL,
   `id_p` int(11) NOT NULL,
   `id_dp` int(11) NOT NULL,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_p` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `loaiphong` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `so_p` int(11) NOT NULL,
+  `check_in` date NOT NULL,
+  `check_out` date NOT NULL,
+  `phone_number` int(11) NOT NULL,
+  `giaphong` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Trang_thai_TT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -207,9 +215,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `contact`
   MODIFY `id_ct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-ALTER TABLE `phong`
-  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `datphong`

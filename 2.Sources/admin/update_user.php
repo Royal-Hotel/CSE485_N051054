@@ -43,8 +43,7 @@ echo "<div class='col-md-12'>";
             // access code for email verification
 
             // create the user
-            if(mysql_num_rows($query>0)){
-                $array=mysql_fetch_array($query);
+            if($user->updateUser()){
                 echo "<div class='alert alert-success' role='alert'> Update User Complete! </div>";
            
                 // empty posted values
@@ -69,7 +68,7 @@ echo "<div class='col-md-12'>";
 
             <tr>
                 <td>Email</td>
-                <td><input type='email' name='email' class='form-control' required value="<?php $array['email']; ?>" /></td>
+                <td><input type='email' name='email' class='form-control' required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>    
     
             <tr>

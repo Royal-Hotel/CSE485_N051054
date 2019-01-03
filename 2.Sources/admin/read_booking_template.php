@@ -5,37 +5,32 @@ if($num>0){
     echo "<table class='table table-hover table-responsive table-bordered'>";
  
     // table headers
-    echo "<tr>";
-        echo "<th>Name</th>";
-        echo "<th>StyleRoom</th>";
-        echo "<th>NumberRoom</th>";
-        echo "<th>Check In</th>";
-        echo "<th>Check Out</th>";
-        echo "<th>Phone</th>";
-        echo "<th>Email</th>";
-        echo "<th>Status</th>";
-        echo "<th>Action</th>";
-
-    echo "</tr>";
+    echo "<tr>
+        <th>Name</th>
+        <th>Style Room</th>
+        <th>Number Room</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Status</th>
+    </tr>";
  
     // loop through the booking records
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         extract($row);
  
         // display booking details
-        echo "<tr>";
-            echo "<td>{$firstname}</td>";
-            echo "<td>{$ten_lp}</td>";
-            echo "<td>{$so_p}</td>";
-            echo "<td>{$check_in}</td>";
-            echo "<td>{$check_out}</td>";
-            echo "<td>{$phone_number}</td>";
-            echo "<td>{$email}</td>";
-            echo "<td>{$statusBooking}</td>";
-            echo "<td>
-                <a href='read_payment.php'>Yes</a> | <a href=''> No</a>
-            </td>";
-        echo "</tr>";
+        echo "<tr>
+            <td>{$firstname}</td>
+            <td>{$ten_lp}</td>
+            <td>{$so_p}</td>
+            <td>{$check_in}</td>
+            <td>{$check_out}</td>
+            <td>{$phone_number}</td>
+            <td>{$email}</td>
+            <td>{$statusBooking}</td>
+        </tr>";
         }
  
     echo "</table>";

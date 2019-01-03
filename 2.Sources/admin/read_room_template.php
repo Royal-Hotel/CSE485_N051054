@@ -19,22 +19,21 @@ if($num>0){
         <th>Style Room</th>
         <th>Room Rates</th>
         <th>Status Room</th>
-        <th>Status Room</th>
     </tr>";
  
     // loop through the user records
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    extract($row);
-
-    // display user details
-    echo "<tr>
-        <td>{$id_p}</td>
-        <td>{$ten_p}</td>
-        <td>{$loaiphong}</td>
-        <td>{$giaphong}</td>
-        <td>{$status}</td>
-    </tr>";
-    }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+ 
+        // display user details
+        echo "<tr>
+            <td>{$id_p}</td>
+            <td>{$ten_p}</td>
+            <td>{$loaiphong}</td>
+            <td>{$giaphong}</td>
+            <td>{$status}</td>
+        </tr>";
+        }
  
     echo "</table>";
  

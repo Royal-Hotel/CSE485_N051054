@@ -34,8 +34,6 @@ echo "<div class='col-md-12'>";
     
         // check if email already exists
         if($room->nameExists()){
-            $room->loaiphong=$_POST['loaiphong'];
-            $room->giaphong=$_POST['giaphong'];
             $room->status=$_POST['status'];
 
             // create the room
@@ -67,16 +65,6 @@ echo "<div class='col-md-12'>";
                 <td><input type='text' name='ten_p' class='form-control' required value="<?php echo isset($_POST['ten_p']) ? htmlspecialchars($_POST['ten_p'], ENT_QUOTES) : "";  ?>" /></td>
             </tr>
     
-            <tr>
-                <td>Style Room</td>
-                <td><input type='text' name='loaiphong' class='form-control' required value="<?php echo isset($_POST['loaiphong']) ? htmlspecialchars($_POST['loaiphong'], ENT_QUOTES) : "";  ?>" /></td>
-            </tr>
-
-            <tr>
-                <td>Room Rates</td>
-                <td><input type='text' name='giaphong' class='form-control' required value="<?php echo isset($_POST['giaphong']) ? htmlspecialchars($_POST['giaphong'], ENT_QUOTES) : "";  ?>" /></td>
-            </tr>
-
             <tr>
                 <td>Status Room</td>
                 <td><input type='text' name='status' class='form-control' required value="<?php echo isset($_POST['status']) ? htmlspecialchars($_POST['status'], ENT_QUOTES) : "";  ?>" /></td>

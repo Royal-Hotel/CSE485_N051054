@@ -152,8 +152,6 @@ class Room{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    loaiphong = :loaiphong,
-                    giaphong = :giaphong,
                     status = :status
                 WHERE
                     ten_p = :ten_p";
@@ -162,14 +160,10 @@ class Room{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->loaiphong=htmlspecialchars(strip_tags($this->loaiphong));
-        $this->giaphong=htmlspecialchars(strip_tags($this->giaphong));
         $this->status=htmlspecialchars(strip_tags($this->status));
         $this->ten_p=htmlspecialchars(strip_tags($this->ten_p));
     
         // bind the values from the form/ liên kết các giá trị từ biểu mẫu
-        $stmt->bindParam(':loaiphong', $this->loaiphong);
-        $stmt->bindParam(':giaphong', $this->giaphong);
         $stmt->bindParam(':status', $this->status);
         $stmt->bindParam(':ten_p', $this->ten_p);
     
