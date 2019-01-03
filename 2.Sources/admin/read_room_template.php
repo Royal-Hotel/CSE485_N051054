@@ -13,28 +13,28 @@ if($num>0){
     echo "<table class='table table-hover table-responsive table-bordered'>";
  
     // table headers
-    echo "<tr>";
-        echo "<th>ID Room</th>";
-        echo "<th>Name</th>";
-        echo "<th>Style Room</th>";
-        echo "<th>Room Rates</th>";
-        echo "<th>Status Room</th>";
-
-    echo "</tr>";
+    echo "<tr>
+        <th>ID Room</th>
+        <th>Name</th>
+        <th>Style Room</th>
+        <th>Room Rates</th>
+        <th>Status Room</th>
+        <th>Status Room</th>
+    </tr>";
  
     // loop through the user records
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        extract($row);
- 
-        // display user details
-        echo "<tr>";
-            echo "<td>{$id_p}</td>";
-            echo "<td>{$ten_p}</td>";
-            echo "<td>{$loaiphong}</td>";
-            echo "<td>{$giaphong}</td>";
-            echo "<td>{$status}</td>";
-        echo "</tr>";
-        }
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    extract($row);
+
+    // display user details
+    echo "<tr>
+        <td>{$id_p}</td>
+        <td>{$ten_p}</td>
+        <td>{$loaiphong}</td>
+        <td>{$giaphong}</td>
+        <td>{$status}</td>
+    </tr>";
+    }
  
     echo "</table>";
  

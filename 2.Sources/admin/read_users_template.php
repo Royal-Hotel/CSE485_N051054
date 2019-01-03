@@ -5,6 +5,8 @@
     </form>
 </div>
 <a href="add_user.php"><button style='margin-left: 940px;' type='button'>Add</button></a>
+<a href='update_user.php'><button  type='button'>Update</button></a>  
+<a href='delete_user.php'><button  type='button'>Delete</button></a>
 <?php
 if($num>0){
  
@@ -17,7 +19,6 @@ if($num>0){
         <th>Email</th>
         <th>Contact Number</th>
         <th>Access Level</th>
-        <th>Action</th>
     </tr>";
  
     // loop through the user records
@@ -31,7 +32,6 @@ if($num>0){
             <td>{$email}</td>
             <td>{$contact_number}</td>
             <td>{$access_level}</td>
-            <td><a href='update_user.php?id=".$id."'><button  type='button'>Update</button></a> <a href='delete_user.php?id=".$id."'><button  type='button'>Delete</button></a>
         </tr>";
         }
  
